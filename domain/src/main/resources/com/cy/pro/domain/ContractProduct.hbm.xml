@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.cy.pro.domain">
+
+    <!-- contract_product_id  varchar2(40)                    not null,
+   contract_id          varchar2(40),
+   factory_id           varchar2(40),
+   factory_name         varchar2(200),
+   product_no           varchar2(50),
+   product_image        varchar2(200),
+   product_desc         varchar2(600),
+   loading_rate         varchar2(30),
+   box_num              int,
+   packing_unit         varchar2(10),
+   cnumber              int,
+   out_number           int,
+   finished             int,
+   product_request      varchar2(2000),
+   price                number(10,2),
+   amount               number(10,2),
+   order_no             int-->
+    <class name="ContractProduct" table="contract_product_P" dynamic-insert="true" dynamic-update="true">
+
+        <id name="id" column="contract_product_id">
+            <generator class="uuid"/><!--主键的生成策略-->
+        </id>
+        <property name="factory_name" column="factory_name"/>
+        <property name="product_no" column="product_no"/>
+        <property name="product_image" column="product_image"/>
+        <property name="product_desc" column="product_desc"/>
+        <property name="loading_rate" column="loading_rate"/>
+        <property name="box_num" column="box_num"/>
+        <property name="packing_unit" column="packing_unit"/>
+        <property name="cnumber" column="cnumber"/>
+        <property name="out_number" column="out_number"/>
+        <property name="finished" column="finished"/>
+        <property name="product_request" column="product_request"/>
+        <property name="price" column="price"/>
+        <property name="amount" column="amount"/>
+        <property name="order_no" column="order_no"/>
+
+        <many-to-one name="contract" column="contract_id" class="Contract"/>
+        <many-to-one name="factory" column="factory_id" class="Factory"/>
+
+        <set name="extCproducts" cascade="all" inverse="true">
+            <key column="contract_product_id"></key>
+            <one-to-many class="ExtCproduct"/>
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.cy.pro.domain">
+
+    <!-- export_id            varchar2(40)                    not null,
+   input_date           datetime,
+   contract_ids         varchar2(200),
+   customer_contract    varchar2(200),
+   lcno                 varchar2(10),
+   consignee            varchar2(100),
+   marks                varchar2(1000),
+   shipment_port        varchar2(100),
+   destination_port     varchar2(100),
+   transport_mode       varchar2(10),
+   price_condition      varchar2(10),
+   remark               varchar2(100),
+   box_nums             int,
+   gross_weights        number(10,2),
+   measurements         number(10,2),
+   state                int,
+   create_by            varchar2(40),
+   create_dept          varchar2(40),
+   create_time          datetime-->
+    <class name="Export" table="EXPORT_C" dynamic-insert="true" dynamic-update="true">
+
+        <id name="id" column="export_id">
+            <generator class="uuid"/><!--主键的生成策略-->
+        </id>
+        <property name="input_date" column="input_date"/>
+        <property name="contract_ids" column="contract_ids"/>
+        <property name="customer_contract" column="customer_contract"/>
+        <property name="lcno" column="lcno"/>
+        <property name="consignee" column="consignee"/>
+        <property name="marks" column="marks"/>
+        <property name="shipment_port" column="shipment_port"/>
+        <property name="destination_port" column="destination_port"/>
+        <property name="transport_mode" column="transport_mode"/>
+        <property name="price_condition" column="price_condition"/>
+        <property name="remark" column="remark"/>
+        <property name="box_nums" column="box_nums"/>
+        <property name="gross_weights" column="gross_weights"/>
+        <property name="measurements" column="measurements"/>
+        <property name="state" column="state"/>
+
+        <property name="create_by" column="create_by"/>
+        <property name="create_dept" column="create_dept"/>
+        <property name="create_time" column="create_time"/>
+        <set name="eps" cascade="all" inverse="true">
+            <key column="export_id"/>
+            <one-to-many class="ExportProduct"/>
+        </set>
+    </class>
+</hibernate-mapping>

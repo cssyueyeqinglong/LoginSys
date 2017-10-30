@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.cy.pro.domain">
+
+    <!-- MODULE_ID            VARCHAR2(40)                    not null,
+   PARENT_ID            VARCHAR2(40),
+   PARENT_NAME          VARCHAR2(100),
+   NAME                 VARCHAR2(100),
+   LAYER_NUM            INT,
+   IS_LEAF              INT,
+   ICO                  VARCHAR2(20),
+   CPERMISSION          VARCHAR2(20),
+   CURL                 VARCHAR2(200),
+   CTYPE                INT,
+   STATE                INT,
+   BELONG               VARCHAR2(100),
+   CWHICH               VARCHAR2(20),
+   QUOTE_NUM            INT,
+   REMARK               VARCHAR2(100),
+   ORDER_NO             INT,
+   CREATE_BY            VARCHAR2(40),
+   CREATE_DEPT          VARCHAR2(40),
+   CREATE_TIME          TIMESTAMP,
+   UPDATE_BY            VARCHAR2(40),
+   UPDATE_TIME          TIMESTAMP,*/,-->
+    <class name="Module" table="Module_P" dynamic-insert="true" dynamic-update="true">
+
+        <id name="id" column="MODULE_ID">
+            <generator class="assigned"/><!--主键的生成策略-->
+        </id>
+        <property name="parent_name" column="PARENT_NAME"/>
+        <property name="parent_id" column="parent_id"/>
+        <property name="name" column="NAME"/>
+        <property name="layer_num" column="LAYER_NUM"/>
+        <property name="is_leaf" column="IS_LEAF"/>
+        <property name="ico" column="ICO"/>
+        <property name="cpermission" column="CPERMISSION"/>
+        <property name="curl" column="CURL"/>
+        <property name="ctype" column="CTYPE"/>
+        <property name="order_no" column="ORDER_NO"/>
+        <property name="state" column="STATE"/>
+        <property name="belong" column="BELONG"/>
+        <property name="cwhich" column="CWHICH"/>
+        <property name="quote_num" column="QUOTE_NUM"/>
+        <property name="remark" column="remark"/>
+        <property name="create_by" column="create_by"/>
+        <property name="create_dept" column="create_dept"/>
+        <property name="create_time" column="create_time"/>
+        <property name="update_by" column="update_by"/>
+        <property name="update_time" column="update_time"/>
+
+    <set name="roles" table="ROLE_Module_P">
+        <key column="MODULE_ID"/>
+        <many-to-many column="role_ID" class="Role" order-by="ORDER_NO"></many-to-many>
+    </set>
+    </class>
+</hibernate-mapping>

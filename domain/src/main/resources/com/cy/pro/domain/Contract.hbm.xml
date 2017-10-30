@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.cy.pro.domain">
+
+    <!-- contract_id          varchar2(40)                    not null,
+   offeror              varchar2(200),
+   contract_no          varchar2(50),
+   signing_date         datetime,
+   input_by             varchar2(30),
+   check_by             varchar2(30),
+   inspector            varchar2(30),
+   total_amount         number(10,2),
+   crequest             varchar2(2000),
+   custom_name          varchar2(200),
+   ship_time            timestamp,
+   import_num           int,
+   delivery_period      timestamp,
+   old_state            int,
+   out_state            int,
+   trade_terms          varchar2(30),
+   print_style          char(1),
+   remark               varchar2(600),
+   state                int,
+   create_by            varchar2(40),
+   create_dept          varchar2(40),
+   create_time          timestamp,
+   update_by            varchar2(40),
+   update_time          TIMESTAMP-->
+    <class name="Contract" table="Contract_P" dynamic-insert="true" dynamic-update="true">
+
+        <id name="id" column="contract_id">
+            <generator class="uuid"/><!--主键的生成策略-->
+        </id>
+        <property name="offeror" column="offeror"/>
+        <property name="contract_no" column="contract_no"/>
+        <property name="signing_date" column="signing_date"/>
+        <property name="input_by" column="input_by"/>
+        <property name="check_by" column="check_by"/>
+        <property name="inspector" column="inspector"/>
+        <property name="total_amount" column="total_amount"/>
+        <property name="crequest" column="crequest"/>
+        <property name="custom_name" column="custom_name"/>
+        <property name="ship_time" column="ship_time"/>
+        <property name="import_num" column="import_num"/>
+        <property name="delivery_period" column="delivery_period"/>
+        <property name="old_state" column="old_state"/>
+        <property name="out_state" column="out_state"/>
+        <property name="trade_terms" column="trade_terms"/>
+        <property name="print_style" column="print_style"/>
+        <property name="remark" column="remark"/>
+        <property name="state" column="state"/>
+
+        <property name="create_by" column="create_by"/>
+        <property name="create_dept" column="create_dept"/>
+        <property name="create_time" column="create_time"/>
+        <property name="update_by" column="update_by"/>
+        <property name="update_time" column="update_time"/>
+
+        <set name="cps" cascade="all" inverse="true">
+            <key column="contract_id"/>
+            <one-to-many class="ContractProduct" />
+        </set>
+
+
+    </class>
+</hibernate-mapping>

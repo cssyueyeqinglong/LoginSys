@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.cy.pro.domain">
+
+    <!-- export_product_id    varchar2(40)                    not null,
+   export_id            varchar2(40),
+   factory_id           varchar2(40),
+   product_no           varchar2(50),
+   packing_unit         varchar2(10),
+   cnumber              int,
+   box_num              int,
+   gross_weight         number(10,2),
+   net_weight           number(10,2),
+   size_length          number(10,2),
+   size_width           number(10,2),
+   size_height          number(10,2),
+   ex_price             number(10,2),
+   price                number(10,2),
+   tax                  number(10,2),
+   order_no             int*/,-->
+    <class name="ExportProduct" table="EXPORT_PRODUCT_C" dynamic-insert="true" dynamic-update="true">
+
+        <id name="id" column="export_product_id">
+            <generator class="uuid"/><!--主键的生成策略-->
+        </id>
+        <property name="product_no" column="product_no"/>
+        <property name="packing_unit" column="packing_unit"/>
+        <property name="cnumber" column="cnumber"/>
+        <property name="box_num" column="box_num"/>
+        <property name="gross_weight" column="gross_weight"/>
+        <property name="net_weight" column="net_weight"/>
+        <property name="size_length" column="size_length"/>
+        <property name="size_width" column="size_width"/>
+        <property name="size_height" column="size_height"/>
+        <property name="ex_price" column="ex_price"/>
+        <property name="price" column="price"/>
+        <property name="tax" column="tax"/>
+        <property name="order_no" column="order_no"/>
+
+        <many-to-one name="export" class="Export" column="export_id"/>
+        <many-to-one name="factory" class="Factory" column="factory_id"/>
+
+        <set name="extEproducts" inverse="true" cascade="all">
+            <key column="export_product_id"/>
+            <one-to-many class="ExtEproduct"/>
+        </set>
+    </class>
+</hibernate-mapping>

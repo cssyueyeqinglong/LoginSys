@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.cy.pro.domain">
+
+    <!-- /*USER_INFO_ID         VARCHAR2(40)                    not null,
+   NAME                 VARCHAR2(20),
+   MANAGER_ID           VARCHAR2(40),
+   JOIN_DATE            TIMESTAMP,
+   SALARY               NUMERIC(8, 2),
+   BIRTHDAY             TIMESTAMP,
+   GENDER               CHAR(1),
+   STATION              VARCHAR2(20),
+   TELEPHONE            VARCHAR2(100),
+   DEGREE               INT,
+   REMARK               VARCHAR2(600),
+   ORDER_NO             INT,
+   CREATE_BY            VARCHAR2(40),
+   CREATE_DEPT          VARCHAR2(40),
+   CREATE_TIME          TIMESTAMP,
+   UPDATE_BY            VARCHAR2(40),
+   UPDATE_TIME          TIMESTAMP,
+   constraint PK_USER_INFO_P primary key (USER_INFO_ID)*/-->
+    <class name="UserInfo" table="USER_INFO_P" dynamic-update="true" dynamic-insert="true">
+
+        <id name="user_info_id" column="user_info_id">
+            <generator class="assigned"/><!--主键的生成策略,手动输入-->
+        </id>
+        <property name="name" column="NAME"/>
+        <property name="join_date" column="JOIN_DATE"/>
+        <property name="salary" column="SALARY"/>
+        <property name="birthday" column="BIRTHDAY"/>
+        <property name="gender" column="GENDER"/>
+        <property name="email" column="EMAIL"/>
+        <property name="station" column="STATION"/>
+        <property name="telephone" column="TELEPHONE"/>
+        <property name="degree" column="DEGREE"/>
+        <property name="remark" column="REMARK"/>
+        <property name="order_no" column="ORDER_NO"/>
+        <property name="create_by" column="create_by"/>
+        <property name="create_dept" column="create_dept"/>
+        <property name="create_time" column="create_time"/>
+        <property name="update_by" column="update_by"/>
+        <property name="update_time" column="update_time"/>
+
+        <many-to-one name="manager" class="User" column="manager_id"></many-to-one>
+    </class>
+</hibernate-mapping>

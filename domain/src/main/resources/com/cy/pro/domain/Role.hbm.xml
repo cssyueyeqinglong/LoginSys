@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.cy.pro.domain">
+
+    <!-- ROLE_ID              VARCHAR2(40)                    not null,
+   NAME                 VARCHAR2(30),
+   REMARK               VARCHAR2(200),
+   ORDER_NO             INT,
+   CREATE_BY            VARCHAR2(40),
+   CREATE_DEPT          VARCHAR2(40),
+   CREATE_TIME          TIMESTAMP,
+   UPDATE_BY            VARCHAR2(40),
+   UPDATE_TIME          TIMESTAMP,-->
+    <class name="Role" table="Role_P" dynamic-insert="true" dynamic-update="true">
+
+        <id name="id" column="ROLE_ID">
+            <generator class="assigned"/><!--主键的生成策略-->
+        </id>
+        <property name="name" column="NAME"/>
+        <property name="remark" column="REMARK"/>
+        <property name="order_no" column="ORDER_NO"/>
+        <property name="create_by" column="create_by"/>
+        <property name="create_dept" column="create_dept"/>
+        <property name="create_time" column="create_time"/>
+        <property name="update_by" column="update_by"/>
+        <property name="update_time" column="update_time"/>
+
+        <set name="users" table="ROLE_USER_P">
+            <key column="ROLE_ID"/>
+            <many-to-many column="USER_ID" class="User"></many-to-many>
+        </set>
+
+        <set name="modules" table="ROLE_Module_P">
+            <key column="role_ID"/>
+            <many-to-many column="Module_ID" class="Module" order-by="ORDER_NO"></many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

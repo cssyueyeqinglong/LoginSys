@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop.xsd
+	http://www.springframework.org/schema/tx
+	http://www.springframework.org/schema/tx/spring-tx.xsd">
+    <bean id="deptService" class="com.cy.pro.service.impl.DeptServiceImpl">
+        <property name="baseDao" ref="baseDao"/>
+    </bean>
+    <bean id="userService" class="com.cy.pro.service.impl.UserServiceImpl">
+        <property name="baseDao" ref="baseDao"/>
+        <property name="mailMessage" ref="mailMessage"/>
+        <property name="mailSender" ref="mailSender"/>
+    </bean>
+    <bean id="roleService" class="com.cy.pro.service.impl.RoleServiceImpl">
+        <property name="baseDao" ref="baseDao"/>
+    </bean>
+    <bean id="moduleService" class="com.cy.pro.service.impl.ModuleServiceImpl">
+        <property name="baseDao" ref="baseDao"/>
+    </bean>
+    <bean id="contractService" class="com.cy.pro.service.impl.ContractServiceImpl">
+        <property name="baseDao" ref="baseDao"/>
+    </bean>
+    <bean id="contractProductService" class="com.cy.pro.service.impl.ContractProductServiceImpl">
+        <property name="baseDao" ref="baseDao"/>
+    </bean>
+    <bean id="extCproductService" class="com.cy.pro.service.impl.ExtCproductServiceImpl">
+        <property name="baseDao" ref="baseDao"/>
+    </bean>
+    <bean id="factoryService" class="com.cy.pro.service.impl.FactoryServiceImpl">
+        <property name="baseDao" ref="baseDao"/>
+    </bean>
+
+    <bean id="exportService" class="com.cy.pro.service.impl.ExportServiceImpl">
+        <property name="baseDao" ref="baseDao"/>
+    </bean>
+    <bean id="exportProductService" class="com.cy.pro.service.impl.ExportProductServiceImpl">
+        <property name="baseDao" ref="baseDao"/>
+    </bean>
+    <bean id="extEproductService" class="com.cy.pro.service.impl.ExtEproductServiceImpl">
+        <property name="baseDao" ref="baseDao"/>
+    </bean>
+    <bean id="sqlService" class="com.cy.pro.service.impl.SQLServiceImpl">
+        <property name="sqlDao" ref="sqlDao"/>
+    </bean>
+</beans>

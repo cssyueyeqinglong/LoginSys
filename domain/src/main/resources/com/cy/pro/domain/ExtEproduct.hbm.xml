@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.cy.pro.domain">
+
+    <!-- EXT_EPRODUCT_ID      varchar2(40)                    not null,
+   factory_id           varchar2(40),
+   export_product_id    varchar2(40),
+   product_no           varchar2(50),
+   product_image        varchar2(200),
+   product_desc         varchar2(600),
+   cnumber              int,
+   packing_unit         varchar2(10),
+   price                number(10,2),
+   amount               number(10,2),
+   product_request      varchar2(2000),
+   order_no             int-->
+    <class name="ExtEproduct" table="EXT_EPRODUCT_C" dynamic-insert="true" dynamic-update="true">
+
+        <id name="id" column="EXT_EPRODUCT_ID">
+            <generator class="uuid"/><!--主键的生成策略-->
+        </id>
+        <property name="product_no" column="product_no"/>
+        <property name="product_image" column="product_image"/>
+        <property name="product_desc" column="product_desc"/>
+        <property name="cnumber" column="cnumber"/>
+        <property name="packing_unit" column="packing_unit"/>
+        <property name="price" column="price"/>
+        <property name="amount" column="amount"/>
+        <property name="product_request" column="product_request"/>
+        <property name="order_no" column="order_no"/>
+
+        <many-to-one name="ep" class="ExportProduct" column="export_product_id"/>
+        <many-to-one name="factory" class="Factory" column="factory_id"/>
+
+
+    </class>
+</hibernate-mapping>

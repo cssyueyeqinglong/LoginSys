@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.cy.pro.domain">
+
+    <!-- FACTORY_ID           varchar2(40)                    not null,
+   ctype                varchar2(10),
+   full_name            varchar2(200),
+   factory_name         varchar2(50),
+   contacts             varchar2(30),
+   phone                varchar2(20),
+   mobile               varchar2(20),
+   fax                  varchar2(20),
+   address              varchar2(200),
+   inspector            varchar2(30),
+   remark               varchar2(2000),
+   order_no             int,
+   state                char(1),
+   create_by            varchar2(40),
+   create_dept          varchar2(40),
+   create_time          timestamp,
+   update_by            varchar2(40),
+   update_time          timestamp,*/,-->
+    <class name="Factory" table="Factory_P" dynamic-insert="true" dynamic-update="true">
+
+        <id name="id" column="FACTORY_ID">
+            <generator class="assigned"/><!--主键的生成策略-->
+        </id>
+        <property name="ctype" column="ctype"/>
+        <property name="full_name" column="full_name"/>
+        <property name="factory_name" column="factory_name"/>
+        <property name="contacts" column="contacts"/>
+        <property name="phone" column="phone"/>
+        <property name="mobile" column="mobile"/>
+        <property name="fax" column="fax"/>
+        <property name="address" column="address"/>
+        <property name="inspector" column="inspector"/>
+        <property name="remark" column="remark"/>
+        <property name="order_no" column="order_no"/>
+        <property name="state" column="state"/>
+        <property name="create_by" column="create_by"/>
+        <property name="create_dept" column="create_dept"/>
+        <property name="create_time" column="create_time"/>
+        <property name="update_by" column="update_by"/>
+        <property name="update_time" column="update_time"/>
+    </class>
+</hibernate-mapping>
